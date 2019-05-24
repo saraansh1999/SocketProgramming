@@ -1,0 +1,28 @@
+SERVER side:
+
+1) We need to pass the port number as an arguement to the program so to run the server do the following:
+    i) gcc server.c -o server
+    ii) ./server <port number>
+2) A new socket is created for the server and it is then bound to an IP address(localhost in this case) and the provided port number.
+3) Then we make the server listen for incoming requests(max 5 here simultaneously).
+4) Then for each new client request, we accept it and then fork the program to have a dedicated thread for each client. We also have a dedicated socket for each client-server connection.
+5) Then the subsequent requests from each client are read, interpreted and served.
+
+
+CLIENT side:
+
+1) We need to pass the IP and the port number of the server as arguements so do the following to run the client side:
+    i) gcc client.c -o client
+    ii) ./client <IP> <port number>
+2) A new socket is created for the client and using the arguements we fetch the details of the server and then establish a connection between them.
+3) We then read commands from the user and forward them to the server and also read the server responses and take required actions like generating a file etc.
+4) Commands implemented:
+    i) 'listall'
+    ii) 'send <filename>'
+    iii) 'quit'
+5) Invalid commands are reported.
+
+
+Acknowledgements have also been implemented for file transfer.
+  
+
